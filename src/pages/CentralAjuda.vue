@@ -119,7 +119,7 @@ const perfisPrincipais = ref([
 const perfilMobile = ref({ 
   title: 'Versão Mobile', 
   subtitle: 'Aprenda a usar o Brisa no seu celular de forma rápida e prática.', 
-  icon: 'mdi-cellphone-information', 
+  icon: 'mdi-cellphone', 
   color: '#0D47A1', 
   route: '/mobile' 
 });

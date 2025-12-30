@@ -2,6 +2,7 @@
   <v-app class="bg-grey-lighten-4">
     <v-app-bar color="#0D47A1" elevation="0" border="bottom">
       <v-container class="d-flex align-center py-0">
+                <v-btn icon="mdi-arrow-left" variant="text" color="white" @click="$router.push('/')"></v-btn>
         <v-icon icon="mdi-cellphone-check" color="white" class="mx-3"></v-icon>
         <v-toolbar-title class="text-white font-weight-bold text-subtitle-1">
           Manual Versão Mobile
@@ -17,18 +18,18 @@
         </v-container>
       </v-sheet>
 
-      <v-container class="mt-n8">
+      <v-container class="mt-n1">
         <v-row justify="center">
           <v-col cols="12" md="10" lg="8">
             
             <v-card 
               v-for="(passo, index) in passos" 
               :key="index" 
-              class="mb-6 overflow-hidden rounded-xl" 
+              class="mb-5 overflow-hidden rounded-xl" 
               elevation="3"
             >
               <v-row no-gutters>
-                <v-col cols="12" sm="4" class="bg-grey-lighten-3 d-flex align-center justify-center pa-4">
+                <v-col cols="12" sm="3" class="bg-grey-lighten-3 d-flex align-center justify-center pa-4">
                   <v-img
                     :src="passo.imagem"
                     max-height="400"
@@ -100,14 +101,13 @@
 import { ref } from 'vue';
 
 // IMPORTAÇÃO DAS IMAGENS
-import imgM1 from '@/assets/m1.jpg'; 
-import imgM2 from '@/assets/m2.jpg'; 
-import imgM3 from '@/assets/m3.jpg'; 
-import imgM4 from '@/assets/m4.jpg'; 
-import imgM5 from '@/assets/m5.jpg'; 
-import imgM6 from '@/assets/m6.jpg'; 
-import imgM7 from '@/assets/m7.jpg'; 
-import imgM9 from '@/assets/m9.jpg'; 
+import imgM1 from '@/assets/m1.png'; 
+import imgM2 from '@/assets/m2.png'; 
+import imgM3 from '@/assets/m3.png'; 
+import imgM4 from '@/assets/m4.png'; 
+import imgM5 from '@/assets/m5.png'; 
+import imgM6 from '@/assets/m6.png'; 
+import imgM7 from '@/assets/m7.png';
 
 const passos = ref([
      {
@@ -133,17 +133,17 @@ const passos = ref([
   },
   {
     titulo: 'Detalhes das Despesas',
-    imagem: imgM6,
+    imagem: imgM5,
     texto: 'Ao selecionar uma despesa, o usuário vê todos os detalhes: itens, valores, categoria e informações da nota. Uma tela pensada para facilitar consultas e revisões.'
   },
   {
     titulo: 'Lançamento Manual',
-    imagem: imgM7,
+    imagem: imgM6,
     texto: 'O app também permite lançar despesas manualmente sem o QR Code. O funcionário preenche as informações necessárias, inclui observações e finaliza tocando em Lançar.'
   },
   {
     titulo: 'Envio para o Gerente',
-    imagem: imgM9,
+    imagem: imgM7,
     texto: 'Ao finalizar a tarefa, o usuário submete a prestação. O sistema exibe uma confirmação de que os dados foram enviados ao gerente para análise e aprovação do reembolso.'
   }
 ]);
