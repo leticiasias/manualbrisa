@@ -22,43 +22,72 @@
 
       <v-container class="mt-n1">
         <v-row justify="center">
-          <v-col cols="12" md="10" lg="10">
-            
-            <div v-for="(item, index) in manualSections" :key="index" class="mb-4">
-              <v-card 
-                elevation="2" 
-                rounded="xl" 
-                class="overflow-hidden card-transition"
-                :class="{ 'active-card-border': activeIndex === index }"
-              >
-                <v-list-item 
-                  class="pa-5" 
-                  @click="toggle(index)"
-                  :append-icon="activeIndex === index ? 'mdi-chevron-up' : 'mdi-chevron-down'"
-                >
-                  <template v-slot:prepend>
-                    <v-avatar :color="activeIndex === index ? '#0D47A1' : 'blue-lighten-5'" size="52">
-                      <v-icon :color="activeIndex === index ? 'white' : '#0D47A1'">{{ item.icon }}</v-icon>
-                    </v-avatar>
-                  </template>
+<v-col cols="12" md="10" lg="10">
+  <div v-for="(item, index) in manualSections" :key="index" class="mb-4">
+    <v-card 
+      elevation="2" 
+      rounded="xl" 
+      class="overflow-hidden card-transition"
+      :class="{ 'active-card-border': activeIndex === index }"
+    >
+      <v-list-item 
+        class="pa-5" 
+        @click="toggle(index)"
+        :append-icon="activeIndex === index ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+      >
+        <template v-slot:prepend>
+          <v-avatar :color="activeIndex === index ? '#0D47A1' : 'blue-lighten-5'" size="52">
+            <v-icon :color="activeIndex === index ? 'white' : '#0D47A1'">{{ item.icon }}</v-icon>
+          </v-avatar>
+        </template>
 
-                  <v-list-item-title class="text-h6 font-weight-bold">
-                    {{ item.titulo }}
-                  </v-list-item-title>
-                </v-list-item>
+        <v-list-item-title class="text-h6 font-weight-bold">
+          {{ item.titulo }}
+        </v-list-item-title>
+      </v-list-item>
 
-                <v-expand-transition>
-                  <div v-show="activeIndex === index">
-                    <v-divider></v-divider>
-                    <v-card-text class="bg-white pa-8 text-body-1 text-grey-darken-3">
-                      <div class="manual-content" v-html="formatText(item.conteudo)"></div>
-                    </v-card-text>
-                  </div>
-                </v-expand-transition>
-              </v-card>
-            </div>
+      <v-expand-transition>
+        <div v-show="activeIndex === index">
+          <v-divider></v-divider>
+          <v-card-text class="bg-white pa-8 text-body-1 text-grey-darken-3">
+            <div class="manual-content mb-6" v-html="formatText(item.conteudo)"></div>
 
-          </v-col>
+<div v-if="item.videoUrl" class="mt-6">
+  <v-responsive 
+    :aspect-ratio="10/5" 
+    width="80%"
+class="mx-auto rounded-xl overflow-hidden bg-black"  >
+    <div v-if="!item.playing" class="fill-height d-flex flex-column align-center justify-center">
+      <v-btn
+        icon="mdi-play"
+        color="white"
+        variant="elevated"
+        size="x-large"
+        class="mb-3"
+        @click="item.playing = true"
+      ></v-btn>
+      <span class="text-white font-weight-bold">Reproduzir Vídeo</span>
+    </div>
+
+    <iframe
+      v-else
+      width="100%"
+      height="100%"
+      :src="`${item.videoUrl}?autoplay=1`"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      style="border: 0; display: block;"
+    ></iframe>
+  </v-responsive>
+</div>
+          </v-card-text>
+        </div>
+      </v-expand-transition>
+    </v-card>
+  </div>
+</v-col>
+          
         </v-row>
       </v-container>
     </v-main>
@@ -74,7 +103,8 @@ const toggle = (index) => {
   activeIndex.value = activeIndex.value === index ? null : index
 }
 
-const manualSections = [
+
+const manualSections = ref([
  
   {
     titulo: '1. Acesso ao Sistema',
@@ -96,6 +126,9 @@ Ao entrar, você verá o **Painel Financeiro** com o menu lateral à esquerda pa
 • **Localização de Pendências**: Utilize o seletor para visualizar as prestações com status **"Aguardando Pagamento"**.
 • **Identificação**: O sistema exibe o ID da prestação, a descrição da tarefa e o nome do funcionário para facilitar a busca.
 • **Início da Auditoria**: Ao selecionar uma conta, o painel de detalhes será carregado automaticamente abaixo do seletor.`
+,
+    videoUrl: 'https://www.youtube.com/embed/d5eBqHve26I',
+    playing: false 
   },
   {
     titulo: '3. Auditoria de Itens e Comprovantes',
@@ -127,16 +160,21 @@ Ao entrar, você verá o **Painel Financeiro** com o menu lateral à esquerda pa
 • **Visualização Expandida**: Na tabela de resultados, utilize o ícone de expansão para visualizar os detalhes de cada item dentro da tarefa.
 • **Exportação PDF**: Gera um relatório detalhado com cabeçalhos por tarefa e subtotais por prestação, ideal para auditorias externas.
 • **Exportação CSV**: Exporta os dados em formato de planilha (separado por ponto e vírgula), facilitando a importação em sistemas de contabilidade ou Excel.`
+,
+    videoUrl: 'https://www.youtube.com/embed/d5eBqHve26I',
+    playing: false 
   }
 ]
+)
 
 const formatText = (text) => {
+  if (!text) return ''
   return text
-    .replace(/^### (.*$)/gim, '<h3 class="text-blue-darken-3 mt-4 mb-2">$1</h3>') 
-    .replace(/\*\*(.*?)\*\*/g, '<strong class="text-blue-darken-4 font-weight-bold">$1</strong>') 
-    .replace(/^\• (.*$)/gim, '<div class="ml-4 mb-1"> <span class="text-blue">•</span> $1</div>') 
-    .replace(/^\- (.*$)/gim, '<div class="ml-6 mb-1"> $1</div>') 
-    .replace(/\n/g, '<br>') 
+    .replace(/^### (.*$)/gim, '<h3 class="text-blue-darken-3 mt-4 mb-2">$1</h3>')
+    .replace(/\*\*(.*?)\*\*/g, '<strong class="text-blue-darken-4 font-weight-bold">$1</strong>')
+    .replace(/^\• (.*$)/gim, '<div class="ml-4 mb-1"> <span class="text-blue">•</span> $1</div>')
+    .replace(/^\- (.*$)/gim, '<div class="ml-6 mb-1"> $1</div>')
+    .replace(/\n/g, '<br>')
 }
 </script>
 

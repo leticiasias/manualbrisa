@@ -22,43 +22,72 @@
 
       <v-container class="mt-n1">
         <v-row justify="center">
-          <v-col cols="12" md="10" lg="10">
-            
-            <div v-for="(item, index) in manualSections" :key="index" class="mb-4">
-              <v-card 
-                elevation="2" 
-                rounded="xl" 
-                class="overflow-hidden card-transition"
-                :class="{ 'active-card-border': activeIndex === index }"
-              >
-                <v-list-item 
-                  class="pa-5" 
-                  @click="toggle(index)"
-                  :append-icon="activeIndex === index ? 'mdi-chevron-up' : 'mdi-chevron-down'"
-                >
-                  <template v-slot:prepend>
-                    <v-avatar :color="activeIndex === index ? '#0D47A1' : 'blue-lighten-5'" size="52">
-                      <v-icon :color="activeIndex === index ? 'white' : '#0D47A1'">{{ item.icon }}</v-icon>
-                    </v-avatar>
-                  </template>
+<v-col cols="12" md="10" lg="10">
+  <div v-for="(item, index) in manualSections" :key="index" class="mb-4">
+    <v-card 
+      elevation="2" 
+      rounded="xl" 
+      class="overflow-hidden card-transition"
+      :class="{ 'active-card-border': activeIndex === index }"
+    >
+      <v-list-item 
+        class="pa-5" 
+        @click="toggle(index)"
+        :append-icon="activeIndex === index ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+      >
+        <template v-slot:prepend>
+          <v-avatar :color="activeIndex === index ? '#0D47A1' : 'blue-lighten-5'" size="52">
+            <v-icon :color="activeIndex === index ? 'white' : '#0D47A1'">{{ item.icon }}</v-icon>
+          </v-avatar>
+        </template>
 
-                  <v-list-item-title class="text-h6 font-weight-bold">
-                    {{ item.titulo }}
-                  </v-list-item-title>
-                </v-list-item>
+        <v-list-item-title class="text-h6 font-weight-bold">
+          {{ item.titulo }}
+        </v-list-item-title>
+      </v-list-item>
 
-                <v-expand-transition>
-                  <div v-show="activeIndex === index">
-                    <v-divider></v-divider>
-                    <v-card-text class="bg-white pa-8 text-body-1 text-grey-darken-3">
-                      <div class="manual-content" v-html="formatText(item.conteudo)"></div>
-                    </v-card-text>
-                  </div>
-                </v-expand-transition>
-              </v-card>
-            </div>
+      <v-expand-transition>
+        <div v-show="activeIndex === index">
+          <v-divider></v-divider>
+          <v-card-text class="bg-white pa-8 text-body-1 text-grey-darken-3">
+            <div class="manual-content mb-6" v-html="formatText(item.conteudo)"></div>
 
-          </v-col>
+<div v-if="item.videoUrl" class="mt-6">
+  <v-responsive 
+    :aspect-ratio="10/5" 
+    width="80%"
+class="mx-auto rounded-xl overflow-hidden bg-black"  >
+    <div v-if="!item.playing" class="fill-height d-flex flex-column align-center justify-center">
+      <v-btn
+        icon="mdi-play"
+        color="white"
+        variant="elevated"
+        size="x-large"
+        class="mb-3"
+        @click="item.playing = true"
+      ></v-btn>
+      <span class="text-white font-weight-bold">Reproduzir Vídeo</span>
+    </div>
+
+    <iframe
+      v-else
+      width="100%"
+      height="100%"
+      :src="`${item.videoUrl}?autoplay=1`"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      style="border: 0; display: block;"
+    ></iframe>
+  </v-responsive>
+</div>
+          </v-card-text>
+        </div>
+      </v-expand-transition>
+    </v-card>
+  </div>
+</v-col>
+          
         </v-row>
       </v-container>
     </v-main>
@@ -74,16 +103,19 @@ const toggle = (index) => {
   activeIndex.value = activeIndex.value === index ? null : index
 }
 
-// Textos configurados com marcações de títulos e listas sem alterar as palavras
-const manualSections = [
+
+const manualSections = ref([
   {
     titulo: '1. Acesso ao Sistema',
     icon: 'mdi-login',
     conteudo: `Para iniciar suas atividades, realize o **login seguro** na plataforma.
 
 1. Acesse a **tela inicial** do sistema.
+
 2. Insira seu **E-mail corporativo** cadastrado.
+
 3. Digite sua **Senha**.
+
 4. Clique no botão azul **ENTRAR**.
 
 Ao entrar, você verá o **Painel Administrativo** com o menu lateral à esquerda para navegação.`
@@ -111,7 +143,9 @@ Padronize as atividades que os funcionários executarão.
 2. No campo **"Descrição do tipo de tarefa"**, insira o nome da atividade (ex: Viagem Nacional, Compras Corporativas).
 3. Clique em **ADICIONAR**.
 
-Confira o registro na lista **"Tipos Cadastrados"**.`
+Confira o registro na lista **"Tipos Cadastrados"**.`,
+    videoUrl: 'https://www.youtube.com/embed/d5eBqHve26I',
+    playing: false 
   },
   {
     titulo: '3. Gestão de Projetos',
@@ -132,7 +166,9 @@ Confira o registro na lista **"Tipos Cadastrados"**.`
 1. Na lista de projetos, clique no **lápis** ao lado do projeto desejado.
 2. O formulário lá em cima será preenchido com os dados atuais.
 3. No campo **Gestores Responsáveis**, adicione ou remova as pessoas.
-4. Clique em **Salvar Alterações**.`
+4. Clique em **Salvar Alterações**.`,
+    videoUrl: 'https://www.youtube.com/embed/4BVjT-1GxO4',
+    playing: false 
   },
   {
     titulo: '4. Gestão de Usuários',
@@ -156,7 +192,9 @@ Se um colaborador saiu da empresa, não exclua o cadastro (para não perder o hi
 
 1. Na lista de usuários, localize a pessoa (use a barra de busca se precisar).
 2. Na coluna de **Ações** (canto direito), clique no ícone vermelho **Bloquear**.
-3. Confirme a ação na janela que abrir. O status mudará para **"Inativo"** e ele não conseguirá mais logar.`
+3. Confirme a ação na janela que abrir. O status mudará para **"Inativo"** e ele não conseguirá mais logar.`,
+    videoUrl: 'https://www.youtube.com/embed/eMcdZuCi9Ng',
+    playing: false 
   },
   {
     titulo: '5. Segurança e Monitoramento',
@@ -188,18 +226,20 @@ Configure quais e-mails o sistema deve enviar automaticamente.
 1. Na mesma tela, clique na aba **Histórico de Envios**.
 2. Consulte a tabela:
    - Se o status for **SUCCESS (Verde)**: O e-mail saiu do sistema.
-   - Se o status for **ERROR (Vermelho)**: Houve falha. Passe o mouse sobre o ícone de alerta para ler o motivo técnico.`
+   - Se o status for **ERROR (Vermelho)**: Houve falha. Passe o mouse sobre o ícone de alerta para ler o motivo técnico.`,
+    videoUrl: 'https://www.youtube.com/embed/zNfDsh1WY8E',
+    playing: false 
   }
-]
+])
 
-// Função de formatação para renderizar o layout baseado nas marcações
 const formatText = (text) => {
+  if (!text) return ''
   return text
-    .replace(/^### (.*$)/gim, '<h3 class="text-blue-darken-3 mt-4 mb-2">$1</h3>') // Títulos
-    .replace(/\*\*(.*?)\*\*/g, '<strong class="text-blue-darken-4 font-weight-bold">$1</strong>') // Negrito
-    .replace(/^\• (.*$)/gim, '<div class="ml-4 mb-1"> <span class="text-blue">•</span> $1</div>') // Bullets
-    .replace(/^\- (.*$)/gim, '<div class="ml-6 mb-1"> $1</div>') // Sub-bullets
-    .replace(/\n/g, '<br>') // Quebras de linha
+    .replace(/^### (.*$)/gim, '<h3 class="text-blue-darken-3 mt-4 mb-2">$1</h3>')
+    .replace(/\*\*(.*?)\*\*/g, '<strong class="text-blue-darken-4 font-weight-bold">$1</strong>')
+    .replace(/^\• (.*$)/gim, '<div class="ml-4 mb-1"> <span class="text-blue">•</span> $1</div>')
+    .replace(/^\- (.*$)/gim, '<div class="ml-6 mb-1"> $1</div>')
+    .replace(/\n/g, '<br>')
 }
 </script>
 

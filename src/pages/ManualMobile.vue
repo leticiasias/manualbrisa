@@ -2,7 +2,7 @@
   <v-app class="bg-grey-lighten-4">
     <v-app-bar color="#0D47A1" elevation="0" border="bottom">
       <v-container class="d-flex align-center py-0">
-                <v-btn icon="mdi-arrow-left" variant="text" color="white" @click="$router.push('/')"></v-btn>
+        <v-btn icon="mdi-arrow-left" variant="text" color="white" @click="$router.push('/')"></v-btn>
         <v-icon icon="mdi-cellphone-check" color="white" class="mx-3"></v-icon>
         <v-toolbar-title class="text-white font-weight-bold text-subtitle-1">
           Manual Versão Mobile
@@ -14,7 +14,7 @@
       <v-sheet color="#0D47A1" class="py-10 text-white text-center">
         <v-container>
           <h1 class="text-h4 font-weight-bold mb-2">Guia do Aplicativo</h1>
-          <p class="text-blue-lighten-4">Siga o passo a passo para utilizar o Brisa no seu celular.</p>
+          <p class="text-blue-lighten-4">Siga o passo a passo para utilizar o Sistema de Reembolso no seu celular.</p>
         </v-container>
       </v-sheet>
 
@@ -58,32 +58,35 @@
               </v-row>
             </v-card>
 
-<v-card class="mt-12 mb-12 pa-8 text-center bg-grey-darken-4 text-white rounded-xl elevation-6">
-  <h2 class="text-h5 font-weight-bold mb-6">Assista ao Tutorial Completo</h2>
-  
-  <v-responsive 
-    max-width="280" 
-    class="mx-auto rounded-xl overflow-hidden bg-black elevation-10"
-    style="border: 8px solid #444 !important;" 
-  >
-    <v-responsive :aspect-ratio="9/16">
-      <iframe
-        width="100%"
-        height="100%"
-        src="https://www.youtube.com/embed/n4omKEJq7mI" 
-        title="Tutorial Mobile Brisa"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-        style="border: 0; display: block;"
-      ></iframe>
-    </v-responsive>
-  </v-responsive>
+            <v-card class="mt-12 mb-12 pa-8 text-center bg-grey-darken-4 text-white rounded-xl elevation-6">
+              <h2 class="text-h5 font-weight-bold mb-6">Assista ao Tutorial Completo</h2>
+              
+              <div class="d-flex justify-center align-center">
+                <v-responsive 
+                  width="100%" 
+                  max-width="280" 
+                  :aspect-ratio="9/16"
+                  class="rounded-xl overflow-hidden bg-black elevation-10 shadow-phone"
+                  style="border: 8px solid #444 !important;" 
+                >
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src="https://www.youtube.com/embed/43I2J87s-Qc?modestbranding=1&rel=0" 
+                    title="Tutorial Mobile Brisa"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                    style="border: 0; display: block; object-fit: cover;"
+                  ></iframe>
+                </v-responsive>
+              </div>
 
-  <p class="mt-6 text-caption text-grey-lighten-1">
-    Confira o passo a passo detalhado no vídeo acima.
-  </p>
-</v-card>
+              <p class="mt-6 text-caption text-grey-lighten-1">
+                Confira o passo a passo detalhado no vídeo acima.
+              </p>
+            </v-card>
+
           </v-col>
         </v-row>
       </v-container>
