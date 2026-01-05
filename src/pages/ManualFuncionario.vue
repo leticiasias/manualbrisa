@@ -139,8 +139,7 @@ Contém duas formas de preencher os dados:
 ### Passo 4: Finalização
 • Insira o CNPJ do estabelecimento, data da compra e anexe o arquivo (PDF ou Imagem) antes de **Salvar Despesa**.
 
-**Edição de Itens**: Na tabela, use o ícone de **Lápis** para corrigir ou a **Lixeira** para excluir itens antes de enviar.`
-,
+**Edição de Itens**: Na tabela, use o ícone de **Lápis** para corrigir ou a **Lixeira** para excluir itens antes de enviar.`,
     videoUrl: 'https://www.youtube.com/embed/5mpqDNJBb18',
     playing: false 
   },
