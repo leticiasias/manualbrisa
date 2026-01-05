@@ -127,7 +127,7 @@ Ao entrar, você verá o **Painel Financeiro** com o menu lateral à esquerda pa
 • **Identificação**: O sistema exibe o ID da prestação, a descrição da tarefa e o nome do funcionário para facilitar a busca.
 • **Início da Auditoria**: Ao selecionar uma conta, o painel de detalhes será carregado automaticamente abaixo do seletor.`
 ,
-    videoUrl: 'https://www.youtube.com/embed/oEyOr5LKmNM',
+    videoUrl: 'https://www.youtube.com/embed/_5ghPxKQ7v4',
     playing: false 
   },
   {
@@ -161,7 +161,7 @@ Ao entrar, você verá o **Painel Financeiro** com o menu lateral à esquerda pa
 • **Exportação PDF**: Gera um relatório detalhado com cabeçalhos por tarefa e subtotais por prestação, ideal para auditorias externas.
 • **Exportação CSV**: Exporta os dados em formato de planilha (separado por ponto e vírgula), facilitando a importação em sistemas de contabilidade ou Excel.`
 ,
-    videoUrl: 'https://www.youtube.com/embed/8VqlSF2OL0g',
+    videoUrl: 'https://www.youtube.com/embed/BwoZ9KlckQ4',
     playing: false 
   }
 ]

@@ -140,7 +140,7 @@ Contém duas formas de preencher os dados:
 • Insira o CNPJ do estabelecimento, data da compra e anexe o arquivo (PDF ou Imagem) antes de **Salvar Despesa**.
 
 **Edição de Itens**: Na tabela, use o ícone de **Lápis** para corrigir ou a **Lixeira** para excluir itens antes de enviar.`,
-    videoUrl: 'https://www.youtube.com/embed/5mpqDNJBb18',
+    videoUrl: 'https://www.youtube.com/embed/wvTPGxNMGn8',
     playing: false 
   },
   {
@@ -165,7 +165,7 @@ Contém duas formas de preencher os dados:
 • **Resumo Financeiro**: No final da página, o sistema calcula o **Total Registrado** automaticamente com base nas despesas listadas.
 **Pendente de Correção**: Se o gestor recusar algo, um alerta azul aparecerá com o **Motivo do Ajuste**.`
 ,
-    videoUrl: 'https://www.youtube.com/embed/kvLmuPQFHsY',
+    videoUrl: 'https://www.youtube.com/embed/4uML6feDlq0',
     playing: false 
   },
 ]
