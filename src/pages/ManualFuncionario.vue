@@ -119,18 +119,7 @@ const manualSections = ref([
 Ao entrar, você verá o **Painel de Funcionário** com o menu lateral à esquerda para navegação.`
   },
   {
-    titulo: '2. Visualizando Prestações de Contas',
-    icon: 'mdi-eye',
-    conteudo: `Acesse o menu lateral e clique em **"Minhas Prestações de Contas"**.
-
-• **Seleção de Prestação**: Utilize o campo de seleção no topo da tela para escolher uma prestação específica.
-• **Status**: O sistema exibirá se o item está **Em Andamento**, **Aguardando Aprovação** ou **Pendente de Correção**.
-• **Detalhes e Histórico**: Ao selecionar, você verá os detalhes do projeto, a tarefa vinculada e o histórico de quem submeteu ou analisou o documento.
-• **Resumo Financeiro**: No final da página, o sistema calcula o **Total Registrado** automaticamente com base nas despesas listadas.
-**Pendente de Correção**: Se o gestor recusar algo, um alerta azul aparecerá com o **Motivo do Ajuste**.`
-  },
-  {
-    titulo: '3. Lançamento de Despesas',
+    titulo: '2. Lançamento de Despesas',
     icon: 'mdi-plus-box',
     conteudo: `Para novos gastos, use o menu **"Registro de Despesas"** ou o botão **"Adicionar Nova Despesa"** dentro de uma prestação aberta..
 
@@ -152,11 +141,11 @@ Contém duas formas de preencher os dados:
 
 **Edição de Itens**: Na tabela, use o ícone de **Lápis** para corrigir ou a **Lixeira** para excluir itens antes de enviar.`
 ,
-    videoUrl: 'https://www.youtube.com/embed/zNfDsh1WY8E',
+    videoUrl: 'https://www.youtube.com/embed/5mpqDNJBb18',
     playing: false 
   },
   {
-    titulo: '4. Submissão para Aprovação',
+    titulo: '3. Submissão para Aprovação',
     icon: 'mdi-send-check',
     conteudo: `Após lançar todas as despesas, você deve enviar o relatório para conferência:
 
@@ -164,8 +153,20 @@ Contém duas formas de preencher os dados:
 • Confira se todos os valores estão corretos na tabela.
 • Clique no botão verde: **"Fechar e Submeter para Aprovação"**.
 • **Atenção**: Após a submissão, os dados são **bloqueados para edição**, exceto se o gestor devolver para correção.`
+
+  },
+    {
+    titulo: '4. Visualizando Prestações de Contas',
+    icon: 'mdi-eye',
+    conteudo: `Acesse o menu lateral e clique em **"Minhas Prestações de Contas"**.
+
+• **Seleção de Prestação**: Utilize o campo de seleção no topo da tela para escolher uma prestação específica.
+• **Status**: O sistema exibirá se o item está **Em Andamento**, **Aguardando Aprovação** ou **Pendente de Correção**.
+• **Detalhes e Histórico**: Ao selecionar, você verá os detalhes do projeto, a tarefa vinculada e o histórico de quem submeteu ou analisou o documento.
+• **Resumo Financeiro**: No final da página, o sistema calcula o **Total Registrado** automaticamente com base nas despesas listadas.
+**Pendente de Correção**: Se o gestor recusar algo, um alerta azul aparecerá com o **Motivo do Ajuste**.`
 ,
-    videoUrl: 'https://www.youtube.com/embed/zNfDsh1WY8E',
+    videoUrl: 'https://www.youtube.com/embed/kvLmuPQFHsY',
     playing: false 
   },
 ]
